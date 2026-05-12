@@ -14,13 +14,13 @@ const Sidebar = () => {
                 {/* <Link href={route('students.list')} className={`${baseLinkClasses} ${url === '/students'?activeClasses:inactiveClasses}`}>Student</Link> */}
 
                 <Link href={`/students?lang=${lang}`}
-                 className={`${baseLinkClasses} ${url === '/students'?activeClasses:inactiveClasses}`}>Student</Link>
+                 className={`${baseLinkClasses} ${url === `/students?lang=${lang}` ? activeClasses:inactiveClasses}`}>Student</Link>
             </li>
             <li>
                 {/* <Link href="/teachers" className={`${baseLinkClasses} ${url === '/teachers'?activeClasses:inactiveClasses}`}>Teacher</Link> */}
                 {/* <Link href={route('teachers.list')} className={`${baseLinkClasses} ${url === '/teachers'?activeClasses:inactiveClasses}`}>Teacher</Link> */}
 
-                <Link href={`/teachers?lang=${lang}`} className={`${baseLinkClasses} ${url === '/teachers'?activeClasses:inactiveClasses}`}>Teacher</Link>
+                <Link href={`/teachers?lang=${lang}`} className={`${baseLinkClasses} ${url === `/teachers?lang = ${lang}`?activeClasses:inactiveClasses}`}>Teacher</Link>
             </li>
         </ul>
 
