@@ -15,8 +15,8 @@ class StudentsController extends Controller
     {
         sleep(7);
         return inertia('Students/Index', [
-            'abc' => '476575',
-            'bb' => 'abcde'
+            'abc' => 'Name',
+            'bb' => 'Last Name'
             ]);
     }
 
