@@ -8,8 +8,11 @@ export default function DashboardLayout({children}){
         <div className="flex">
             <Sidebar/>
             <main className="flex-1">
-                <header className="shadow p-4 bg-white">Topbar (mounted at: {mountedAt})
-                    <LanguageSwitcher/>
+                <header className="shadow p-4 bg-white flex justify-between">
+                    <div>Topbar (mounted at: {mountedAt})</div>
+                    <div>
+                        <LanguageSwitcher/>
+                    </div>
                 </header>
                 
                 <section className="p-4">{children}</section>

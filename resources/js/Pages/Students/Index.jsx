@@ -1,10 +1,14 @@
-import { usePage } from "@inertiajs/react"
+import { Link, router, usePage } from "@inertiajs/react"
 import Sidebar from "@/Components/Sidebar";
 import DashboardLayout from "@/Layouts/DashboardLayout";
 import { useTranslation } from "react-i18next";
+import { Button } from "@headlessui/react";
 
 export default function Students(){
     // const { abc, bb, user_name, father_name } = usePage().props;
+    const handlePageChange = (url) =>{
+        if (url) router.visit(url);
+    }
     const { students } = usePage().props;
     const {t, i18n} = useTranslation();
     return (
@@ -29,7 +33,7 @@ export default function Students(){
             </thead>
 
             <tbody>
-              {students.map((students, index) => (
+              {students.data.map((students, index) => (
                 <tr>
                   <td className="p-2">{index + 1}</td>
                   <td className="p-2">{students.name}</td>
@@ -40,6 +44,20 @@ export default function Students(){
               ))}
             </tbody>
         </table>
+        <div className="flex justify-between">
+            <div></div>
+            <div>
+            {students.links.map((link, idx) => (
+                <Button
+                  key={idx}
+                  onClick={ () => handlePageChange(link.url)}
+                  disabled={!link.url}
+                  dangerouslySetInnerHTML={{__html: link.label}}
+                  className={`px-4 py-4 active:bg-red-400`}
+                />
+            ))}
+            </div>
+        </div>
     </div>
 </main>
   </DashboardLayout>
