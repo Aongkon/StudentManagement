@@ -3,14 +3,27 @@ import Sidebar from "@/Components/Sidebar";
 import DashboardLayout from "@/Layouts/DashboardLayout";
 import { useTranslation } from "react-i18next";
 import { Button } from "@headlessui/react";
+import { useState } from "react";
+import Router from "vendor/tightenco/ziggy/src/js/Router";
 
 export default function Students(){
     // const { abc, bb, user_name, father_name } = usePage().props;
     const handlePageChange = (url) =>{
         if (url) router.visit(url);
     }
-    const { students } = usePage().props;
+    const { students, search:initialSearch } = usePage().props;
     const {t, i18n} = useTranslation();
+
+    const [search, setSearch] = useState(inertialSearch || "")
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        router.get('students', {search}, {
+            preserveState: true,
+            replace: true
+
+        })
+    }
     return (
       //composition layout
       <DashboardLayout>
@@ -19,6 +32,13 @@ export default function Students(){
         <h1 className="text-2xl font-bold text-gray-800">{t('Students Page')}</h1>
         <p className="text-sm text-gray-500">{t('Welcome to the student management section.')}</p>
     </header>
+    <form onSubmit={handleSearch}>
+        <input type="text" placeholder={t('Search Students')}
+             value={search}
+             onChange={(e) => setSearch(e.target.value)}
+         />
+        <button type="submit">Search</button>
+    </form>
 
     <div className="overflow-x-auto bg-white rounded shadow p-4">
         <table className="min-w-full table-auto">
