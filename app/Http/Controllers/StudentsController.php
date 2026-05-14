@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 use App\Models\Students;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Nette\Utils\Paginator;
 
 class StudentsController extends Controller
 {
     //
     public function index(){
-
+        $students = Students::paginate(1);
         $students = Students::all();
         return Inertia::render('Students/Index', [
             'students' => $students                                         
