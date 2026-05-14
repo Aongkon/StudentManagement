@@ -9,8 +9,15 @@ use App\Models\Student;
 class StudentsController extends Controller
 {
     //
-    public function index(){
-        $students = Student::paginate(10);
+    public function index(Request $request){
+        $search = $request->input('search');
+        $students = Student::with('user: id, name')
+         ->when($search, function($query, $search){
+            $query->where('name', 'like', "%{$search}%")
+            ->orWhere('email', 'like',"%{$search}%");
+        })
+        ->paginate(10);
+        
         // $students = Students::all();
         return Inertia::render('Students/Index', [
             'students' => $students                                         
