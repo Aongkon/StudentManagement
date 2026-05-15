@@ -4,7 +4,8 @@ import DashboardLayout from "@/Layouts/DashboardLayout";
 import { useTranslation } from "react-i18next";
 import { Button } from "@headlessui/react";
 import { useState } from "react";
-import Router from "vendor/tightenco/ziggy/src/js/Router";
+// import Router from "vendor/tightenco/ziggy/src/js/Router";
+// import route from 'ziggy-js';
 
 export default function Students(){
     // const { abc, bb, user_name, father_name } = usePage().props;
@@ -14,7 +15,7 @@ export default function Students(){
     const { students, search:initialSearch } = usePage().props;
     const {t, i18n} = useTranslation();
 
-    const [search, setSearch] = useState(inertialSearch || "")
+    const [search, setSearch] = useState(initialSearch || "")
 
     const handleSearch = (e) => {
         e.preventDefault();

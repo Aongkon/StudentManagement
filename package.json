@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "i18next": "^26.0.10",
-        "react-i18next": "^17.0.7"
+        "react-i18next": "^17.0.7",
+        "ziggy-js": "^2.6.2"
     }
 }
