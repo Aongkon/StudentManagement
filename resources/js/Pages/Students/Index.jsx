@@ -4,8 +4,6 @@ import DashboardLayout from "@/Layouts/DashboardLayout";
 import { useTranslation } from "react-i18next";
 import { Button } from "@headlessui/react";
 import { useState } from "react";
-// import Router from "vendor/tightenco/ziggy/src/js/Router";
-// import route from 'ziggy-js';
 
 export default function Students(){
     // const { abc, bb, user_name, father_name } = usePage().props;
@@ -62,6 +60,8 @@ export default function Students(){
          />
         <button type="submit">Search</button>
     </form>
+
+    <Link href="create" className="bg-green-400 p-4 text-white font-bold hover:bg-green-600 transition-all duration-300">Create Student</Link>
 
     <div className="overflow-x-auto bg-white rounded shadow p-4">
         <table className="min-w-full table-auto">

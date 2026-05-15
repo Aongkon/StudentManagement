@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Student;
+use App\Models\Students;
 
 class StudentsController extends Controller
 {
@@ -29,25 +30,39 @@ class StudentsController extends Controller
             'direction' =>  $sortDirection                          
         ]);
     }
-    public function withData()
-    {
-        sleep(7);
-        return inertia('Students/Index', [
-            'abc' => 'Name',
-            'bb' => 'Last Name'
-            ]);
+
+    public function create(){
+        return Inertia::render('Students/Create');
     }
 
-    public function withRouteParameters($name, $last_name){
-        return inertia('Students/Index', [
-            'abc' => $name,
-            'bb' => $last_name
-        ]);
+    public function store(Request $request){
+        $student = new Students();
+        $student->name: $request->name;
+        $student->email: $request->email;
+        $student->age: $request->age;
+        $student->birth_of_date: $request->birth_of_date; 
+        $student->gender: $request->gender;
+        $student->score:$request->score;
     }
-    public function withOptionalRouteParameters($name = 'Guest', $last_name = 'Users'){
-        return Inertia::render('Students/Index', [
-            'abc' => $name,
-            'bb' => $last_name
-        ]);
-    }
+    // public function withData()
+    // {
+    //     sleep(7);
+    //     return inertia('Students/Index', [
+    //         'abc' => 'Name',
+    //         'bb' => 'Last Name'
+    //         ]);
+    // }
+
+    // public function withRouteParameters($name, $last_name){
+    //     return inertia('Students/Index', [
+    //         'abc' => $name,
+    //         'bb' => $last_name
+    //     ]);
+    // }
+    // public function withOptionalRouteParameters($name = 'Guest', $last_name = 'Users'){
+    //     return Inertia::render('Students/Index', [
+    //         'abc' => $name,
+    //         'bb' => $last_name
+    //     ]);
+    // }
 }
