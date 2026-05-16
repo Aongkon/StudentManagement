@@ -31,18 +31,22 @@ class StudentsController extends Controller
         ]);
     }
 
-    public function create(){
-        return Inertia::render('Students/Create');
-    }
+    // public function create(){
+    //     return Inertia::render('Students/Create');
+    // }
 
     public function store(Request $request){
         $student = new Students();
-        $student->name: $request->name;
-        $student->email: $request->email;
-        $student->age: $request->age;
-        $student->birth_of_date: $request->birth_of_date; 
-        $student->gender: $request->gender;
-        $student->score:$request->score;
+        $student->name = $request->name;
+        $student->email = $request->email;
+        // $student->age = $request->age;
+        // $student->birth_of_date = $request->birth_of_date; 
+        $student->gender = $request->gender;
+        $student->score = $request->score;
+        $student->user_id = 1;
+        $student->save();
+
+        return redirect()->route('students.list');
     }
     // public function withData()
     // {

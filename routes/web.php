@@ -12,12 +12,12 @@ Route::controller(StudentsController::class)->group(function(){
     // Route::get('students','withData');
     // Route::get('students/{name}/{last_name}', 'withRouteParameters');
     // Route::get('students/{name?}/{last_name?}', 'withOptionalRouteParameters');
-    Route::get('/students/create', 'create')->name('students.create');
+    // Route::get('/students/create', 'create')->name('students.create');
     Route::post('/students', 'store')->name('students.store');
     
 });
 
-// Route::inertia('create', 'Students/Create')->name('create');
+Route::inertia('create', 'Students/Create')->name('create');
 
 Route::inertia('teachers', 'Teachers/Index')->name('teachers.list');
 // Route::inertia('teachers', 'Teachers/Index');

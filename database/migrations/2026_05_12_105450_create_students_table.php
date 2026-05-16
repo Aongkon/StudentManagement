@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('gender');
             $table->integer('score');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
